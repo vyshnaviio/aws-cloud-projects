@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPDFOnly",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:PutObject",
+            "Resource": [
+                "arn:aws:s3:::only-pdf-cloud/*.txt",
+                "arn:aws:s3:::only-pdf-cloud/*.jpg",
+                "arn:aws:s3:::only-pdf-cloud/*.jpeg",
+                "arn:aws:s3:::only-pdf-cloud/*.png",
+                "arn:aws:s3:::only-pdf-cloud/*.docx",
+                "arn:aws:s3:::only-pdf-cloud/*.xlsx",
+                "arn:aws:s3:::only-pdf-cloud/*.mp4",
+                "arn:aws:s3:::only-pdf-cloud/*.zip"
+            ],
+            "Condition": {
+                "StringNotEquals": {
+                    "aws:ResourceAccount": ""
+                }
+            }
+        }
+    ]
+}
